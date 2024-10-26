@@ -1,0 +1,29 @@
+{
+    "zonasComunes": [
+      {
+        "descripcion": "Piscina",
+        "horaInicio": "08:00:00",
+        "horaCierre": "20:00:00",
+        "costoMantenimiento": 150.0,
+        "cantidadMaxima": 30,
+        "estado": "Disponible"
+      },
+      {
+        "descripcion": "Cancha de basquet",
+        "horaInicio": "10:00:00",
+        "horaCierre": "22:00:00",
+        "costoMantenimiento": 100.0,
+        "cantidadMaxima": 20,
+        "estado": "En mantenimiento"
+      },
+      {
+        "descripcion": "Cancha de futbol",
+        "horaInicio": "06:00:00",
+        "horaCierre": "22:00:00",
+        "costoMantenimiento": 200000,
+        "cantidadMaxima": 25,
+        "estado": "Disponible"
+      }
+    ]
+  }
+  

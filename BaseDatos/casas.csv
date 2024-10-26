@@ -1,0 +1,3 @@
+idCasa;nombrePropietario;apellidoPropietario;idPropietario;facturaMensual;costoAdministracion;metrosCuadrados;estado
+C001;santiago;correa;10;120000;45000;120;true
+C002;Santiago;Correa Marulanda;1033;200000;60000;155;false

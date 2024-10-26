@@ -1,0 +1,21 @@
+zonaComun;horaDisponible;disponible
+Piscina;08:00 - 10:00;true
+Piscina;10:00 - 12:00;true
+Piscina;12:00 - 14:00;false
+Piscina;14:00 - 16:00;false
+Piscina;16:00 - 18:00;true
+Piscina;18:00 - 20:00;false
+Cancha de basquet;10:00 - 12:00;false
+Cancha de basquet;12:00 - 14:00;true
+Cancha de basquet;14:00 - 16:00;false
+Cancha de basquet;16:00 - 18:00;true
+Cancha de basquet;18:00 - 20:00;false
+Cancha de basquet;20:00 - 22:00;true
+Cancha de futbol;06:00 - 08:00;false
+Cancha de fubtol;08:00 - 10:00;false
+Cancha de futbol;10:00 - 12:00;true
+Cancha de futbol;12:00 - 14:00;true
+Cancha de futbol;14:00 - 16:00;false
+Cancha de futbol;16:00 - 18:00;false
+Cancha de futbol;18:00 - 20:00;true
+Cancha de futbol;20:00 - 22:00;true
