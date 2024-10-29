@@ -51,9 +51,9 @@ public class GestionLogueo {
                 if (idRegistrado.equals(id)) {
                     String rolRegistrado = data[11].trim();
                     if (rolRegistrado.equals("1")) {
-                        return 1;  // Retorna 1 si es propietario
+                        return 1;  // retorna 1 si es propietario
                     } else if (rolRegistrado.equals("2")) {
-                        return 2; // Retorna 2 si es empleado
+                        return 2; // retorna 2 si es empleado
                     }
                 }
             }

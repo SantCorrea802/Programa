@@ -5,7 +5,9 @@
 package Ventanas;
 
 import Control.GestionFactura;
+import Control.GestionMulta;
 import Control.GestionZonaComun;
+import java.awt.Color;
 import javax.swing.JOptionPane;
 
 /**
@@ -22,7 +24,6 @@ public class MenuPropietario extends javax.swing.JFrame {
         
         this.idPropietario = idPropietario;
         initComponents();
-        this.setLocationRelativeTo(null);
         this.setLocationRelativeTo(null);
     }
 
@@ -51,6 +52,10 @@ public class MenuPropietario extends javax.swing.JFrame {
         jLabel3 = new javax.swing.JLabel();
         btnFacturaMensual1 = new javax.swing.JPanel();
         jLabel7 = new javax.swing.JLabel();
+        jLabel9 = new javax.swing.JLabel();
+        jLabel15 = new javax.swing.JLabel();
+        btnPagarMultas = new javax.swing.JPanel();
+        jLabel16 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setResizable(false);
@@ -97,6 +102,11 @@ public class MenuPropietario extends javax.swing.JFrame {
 
         btnMultas.setBackground(new java.awt.Color(86, 105, 129));
         btnMultas.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnMultas.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnMultasMouseClicked(evt);
+            }
+        });
 
         jLabel6.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
         jLabel6.setForeground(new java.awt.Color(255, 255, 255));
@@ -203,18 +213,58 @@ public class MenuPropietario extends javax.swing.JFrame {
             .addComponent(jLabel7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
+        jLabel9.setFont(new java.awt.Font("Arial", 1, 24)); // NOI18N
+        jLabel9.setForeground(new java.awt.Color(86, 105, 129));
+        jLabel9.setText("Cerrar sesión");
+        jLabel9.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel9MouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                jLabel9MouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                jLabel9MouseExited(evt);
+            }
+        });
+
+        jLabel15.setIcon(new javax.swing.ImageIcon("C:\\Users\\HP\\Documents\\NetBeansProjects\\Urbanizacion\\src\\main\\java\\Imagenes\\flecha.png")); // NOI18N
+
+        btnPagarMultas.setBackground(new java.awt.Color(86, 105, 129));
+        btnPagarMultas.setForeground(new java.awt.Color(255, 255, 255));
+        btnPagarMultas.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnPagarMultas.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnPagarMultasMouseClicked(evt);
+            }
+        });
+
+        jLabel16.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
+        jLabel16.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel16.setText("Pagar mis multas");
+
+        javax.swing.GroupLayout btnPagarMultasLayout = new javax.swing.GroupLayout(btnPagarMultas);
+        btnPagarMultas.setLayout(btnPagarMultasLayout);
+        btnPagarMultasLayout.setHorizontalGroup(
+            btnPagarMultasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(btnPagarMultasLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel16)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+        btnPagarMultasLayout.setVerticalGroup(
+            btnPagarMultasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jLabel16, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        );
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(37, 37, 37)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(jLabel2)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(btnMultas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(37, 37, 37)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addComponent(jLabel1)
@@ -223,9 +273,17 @@ public class MenuPropietario extends javax.swing.JFrame {
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addComponent(jLabel3)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(btnFacturaMensual1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addComponent(btnFacturaMensual1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(jLabel2)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(btnMultas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addGap(52, 52, 52)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(jLabel15)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(btnPagarMultas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addComponent(jLabel13)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -233,7 +291,10 @@ public class MenuPropietario extends javax.swing.JFrame {
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addComponent(jLabel4)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(btnReservas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                                .addComponent(btnReservas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(328, 328, 328)
+                        .addComponent(jLabel9)))
                 .addContainerGap(126, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
@@ -255,10 +316,16 @@ public class MenuPropietario extends javax.swing.JFrame {
                         .addComponent(btnFacturaMensual1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(jLabel3)))
                 .addGap(46, 46, 46)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(btnMultas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(105, Short.MAX_VALUE))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(btnMultas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addComponent(btnPagarMultas, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jLabel15)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 32, Short.MAX_VALUE)
+                .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(31, 31, 31))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -279,7 +346,11 @@ public class MenuPropietario extends javax.swing.JFrame {
         String[] zonas = {"Piscina", "Cancha de basquet", "Cancha de futbol"};
         String zonaSeleccionada = (String) JOptionPane.showInputDialog(null, "Selecciona una zona común:",
             "Selector de zona común", JOptionPane.QUESTION_MESSAGE, null, zonas, zonas[0]);
-
+        
+        if (zonaSeleccionada == null){
+            return;
+        }
+        
         JOptionPane.showMessageDialog(null, "Has seleccionado: " + zonaSeleccionada);
         GestionZonaComun gzc = new GestionZonaComun();
         gzc.observarHorario(zonaSeleccionada);
@@ -292,6 +363,9 @@ public class MenuPropietario extends javax.swing.JFrame {
             "Selector de zona común", JOptionPane.QUESTION_MESSAGE, null, zonas, zonas[0]);
 
         this.zonaComun = zonaSeleccionada;
+        if (this.zonaComun == null){
+            return;
+        }
         JOptionPane.showMessageDialog(null, "Has seleccionado: " + zonaSeleccionada);
         ReservaZonaComun ventanaReservaZonaComun = new ReservaZonaComun(this.idPropietario, this.zonaComun);
         ventanaReservaZonaComun.setVisible(true);
@@ -338,6 +412,44 @@ public class MenuPropietario extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_btnFacturaMensual1MouseClicked
 
+    private void jLabel9MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel9MouseEntered
+        jLabel9.setForeground(Color.BLUE);
+    }//GEN-LAST:event_jLabel9MouseEntered
+
+    private void jLabel9MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel9MouseExited
+        jLabel9.setForeground(new Color(86,105,129));
+    }//GEN-LAST:event_jLabel9MouseExited
+
+    private void jLabel9MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel9MouseClicked
+        Login menuLogin = new Login();
+        menuLogin.setVisible(true);
+        this.setVisible(false);
+    }//GEN-LAST:event_jLabel9MouseClicked
+
+    private void btnPagarMultasMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnPagarMultasMouseClicked
+        Object[] opcionesTerminos = {"Pagar", "Cancelar"};
+        int seleccionTerminos = JOptionPane.showOptionDialog(null, "¿Deseas pagar tus facturas mensuales?", "Aceptar/Rechazar",
+            JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE, null, opcionesTerminos, opcionesTerminos[0]);
+        if (seleccionTerminos == JOptionPane.YES_OPTION) {
+            GestionMulta gm = new GestionMulta();
+            gm.pagarMultaMensual(this.idPropietario);
+        } else if (seleccionTerminos == JOptionPane.NO_OPTION) {
+            return;
+        }
+    }//GEN-LAST:event_btnPagarMultasMouseClicked
+
+    private void btnMultasMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnMultasMouseClicked
+        Object[] opcionesTerminos = {"Descargar", "Cancelar"};
+        int seleccionTerminos = JOptionPane.showOptionDialog(null, "¿Deseas descargar tus multas?", "Aceptar/Rechazar",
+            JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE, null, opcionesTerminos, opcionesTerminos[0]);
+        if (seleccionTerminos == JOptionPane.YES_OPTION) {
+            GestionMulta gm = new GestionMulta();
+            gm.descargarMultaMensual(this.idPropietario);
+        } else if (seleccionTerminos == JOptionPane.NO_OPTION) {
+            return;
+        }
+    }//GEN-LAST:event_btnMultasMouseClicked
+
     /**
      * @param args the command line arguments
      */
@@ -348,10 +460,13 @@ public class MenuPropietario extends javax.swing.JFrame {
     private javax.swing.JPanel btnFacturaMensual1;
     private javax.swing.JPanel btnFacturaMensual2;
     private javax.swing.JPanel btnMultas;
+    private javax.swing.JPanel btnPagarMultas;
     private javax.swing.JPanel btnReservas;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel14;
+    private javax.swing.JLabel jLabel15;
+    private javax.swing.JLabel jLabel16;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -359,6 +474,7 @@ public class MenuPropietario extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     // End of variables declaration//GEN-END:variables
 }

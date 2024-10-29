@@ -102,7 +102,6 @@ public class GestionFactura {
 
                         return new Propietario(salario, fechaRegistro, nombre, correo, id, fechaNacimiento, numeroContacto, genero, contraseña, profesion, apellido, rol);
                     } catch (NumberFormatException e) {
-                        System.out.println("Error al convertir un valor numérico en la línea: " + linea);
                         e.printStackTrace();
                     }
                 }
@@ -214,89 +213,89 @@ public class GestionFactura {
             }
         }
     }
-public void pagarFacturaMensual(String idUsuario) {
-    List<String> lineasActualizadas = new ArrayList<>();
-    boolean facturaEncontrada = false;
+    public void pagarFacturaMensual(String idUsuario) {
+        List<String> lineasActualizadas = new ArrayList<>();
+        boolean facturaEncontrada = false;
 
-    String numFactura = JOptionPane.showInputDialog("Ingrese el número de factura a pagar:");
+        String numFactura = JOptionPane.showInputDialog("Ingrese el número de factura a pagar:");
 
-    if (numFactura == null || numFactura.isEmpty()) {
-        JOptionPane.showMessageDialog(null, "Número de factura no ingresado. Operación cancelada.");
-        return;
-    }
+        if (numFactura == null || numFactura.isEmpty()) {
+            JOptionPane.showMessageDialog(null, "Número de factura no ingresado. Operación cancelada.");
+            return;
+        }
 
-    try (BufferedReader reader = new BufferedReader(new FileReader("BaseDatos/facturas.csv"))) {
-        String linea;
-        while ((linea = reader.readLine()) != null) {
-            String[] datos = linea.split(";");
-            if (datos.length == 6) {
-                String numFacturaArchivo = datos[0];
-                String fechaPago = datos[1];
-                String fechaFactura = datos[2];
-                String valorPagar = datos[3];
-                String valorPagado = datos[4];
-                String idEmisor = datos[5];
-                if (numFacturaArchivo.equals(numFactura) && idEmisor.equals(idUsuario)) {
-                    facturaEncontrada = true;
+        try (BufferedReader reader = new BufferedReader(new FileReader("BaseDatos/facturas.csv"))) {
+            String linea;
+            while ((linea = reader.readLine()) != null) {
+                String[] datos = linea.split(";");
+                if (datos.length == 6) {
+                    String numFacturaArchivo = datos[0];
+                    String fechaPago = datos[1];
+                    String fechaFactura = datos[2];
+                    String valorPagar = datos[3];
+                    String valorPagado = datos[4];
+                    String idEmisor = datos[5];
+                    if (numFacturaArchivo.equals(numFactura) && idEmisor.equals(idUsuario)) {
+                        facturaEncontrada = true;
 
-                    double valorPagarDouble = Double.parseDouble(valorPagar);
-                    double valorPagadoDouble = Double.parseDouble(valorPagado);
-                    double saldoPendiente = valorPagarDouble - valorPagadoDouble;
-                    String montoPagoStr = JOptionPane.showInputDialog("El saldo pendiente es de $" + saldoPendiente + ". Ingrese el monto a pagar:");
-                    if (montoPagoStr == null || montoPagoStr.isEmpty()) {
-                        JOptionPane.showMessageDialog(null, "Monto de pago no ingresado. Operación cancelada.");
-                        lineasActualizadas.add(linea);
-                        continue;
-                    }
-                    try {
-                        double montoPago = Double.parseDouble(montoPagoStr);
-
-                        if (montoPago > saldoPendiente) {
-                            JOptionPane.showMessageDialog(null, "El monto a pagar no puede ser mayor que el saldo pendiente.");
+                        double valorPagarDouble = Double.parseDouble(valorPagar);
+                        double valorPagadoDouble = Double.parseDouble(valorPagado);
+                        double saldoPendiente = valorPagarDouble;
+                        String montoPagoStr = JOptionPane.showInputDialog("El saldo pendiente es de $" + saldoPendiente + ". Ingrese el monto a pagar:");
+                        if (montoPagoStr == null || montoPagoStr.isEmpty()) {
+                            JOptionPane.showMessageDialog(null, "Monto de pago no ingresado. Operación cancelada.");
                             lineasActualizadas.add(linea);
                             continue;
-                        } else if (montoPago == saldoPendiente) {
-                            valorPagadoDouble += montoPago;
-                            valorPagarDouble = 0;
-                            JOptionPane.showMessageDialog(null, "Pago completo realizado. La factura ha sido pagada en su totalidad.");
-                        } else {
-                            valorPagadoDouble += montoPago;
-                            valorPagarDouble -= montoPago;
-                            JOptionPane.showMessageDialog(null, "Pago parcial realizado. El saldo restante es de $" + valorPagarDouble);
                         }
-                        datos[3] = String.valueOf(valorPagarDouble);
-                        datos[4] = String.valueOf(valorPagadoDouble);
-                        lineasActualizadas.add(String.join(";", datos));
-                    } catch (NumberFormatException e) {
-                        JOptionPane.showMessageDialog(null, "Monto de pago no válido. Operación cancelada.");
+                        try {
+                            double montoPago = Double.parseDouble(montoPagoStr);
+
+                            if (montoPago > saldoPendiente) {
+                                JOptionPane.showMessageDialog(null, "El monto a pagar no puede ser mayor que el saldo pendiente.");
+                                lineasActualizadas.add(linea);
+                                continue;
+                            } else if (montoPago == saldoPendiente) {
+                                valorPagarDouble = 0;
+                                valorPagado = String.valueOf(Double.parseDouble(valorPagado) + montoPago);
+                                JOptionPane.showMessageDialog(null, "Pago completo realizado. La factura ha sido pagada en su totalidad.");
+                            } else {
+                                valorPagarDouble -= montoPago;
+                                valorPagado = String.valueOf(Double.parseDouble(valorPagado) + montoPago);
+                                JOptionPane.showMessageDialog(null, "Pago parcial realizado. El saldo restante es de $" + valorPagarDouble);
+                            }
+                            datos[3] = String.valueOf(valorPagarDouble); 
+                            datos[4] = valorPagado;
+                            lineasActualizadas.add(String.join(";", datos));
+                        } catch (NumberFormatException e) {
+                            JOptionPane.showMessageDialog(null, "Monto de pago no válido. Operación cancelada.");
+                            lineasActualizadas.add(linea);
+                        }
+                    } else {
                         lineasActualizadas.add(linea);
                     }
                 } else {
                     lineasActualizadas.add(linea);
                 }
-            } else {
-                lineasActualizadas.add(linea);
             }
+        } catch (IOException e) {
+            e.printStackTrace();
+            JOptionPane.showMessageDialog(null, "Error al leer el archivo de facturas.");
+            return;
         }
-    } catch (IOException e) {
-        e.printStackTrace();
-        JOptionPane.showMessageDialog(null, "Error al leer el archivo de facturas.");
-        return;
-    }
-    if (!facturaEncontrada) {
-        JOptionPane.showMessageDialog(null, "La factura con el número proporcionado no existe para el usuario actual.");
-        return;
-    }
-    try (BufferedWriter writer = new BufferedWriter(new FileWriter("BaseDatos/facturas.csv"))) {
-        for (String lineaActualizada : lineasActualizadas) {
-            writer.write(lineaActualizada);
-            writer.newLine();
+        if (!facturaEncontrada) {
+            JOptionPane.showMessageDialog(null, "La factura con el número proporcionado no existe para el usuario actual.");
+            return;
         }
-        JOptionPane.showMessageDialog(null, "Factura actualizada correctamente.");
-    } catch (IOException e) {
-        e.printStackTrace();
-        JOptionPane.showMessageDialog(null, "Error al actualizar el archivo de facturas.");
+        try (BufferedWriter writer = new BufferedWriter(new FileWriter("BaseDatos/facturas.csv"))) {
+            for (String lineaActualizada : lineasActualizadas) {
+                writer.write(lineaActualizada);
+                writer.newLine();
+            }
+            JOptionPane.showMessageDialog(null, "Factura actualizada correctamente.");
+        } catch (IOException e) {
+            e.printStackTrace();
+            JOptionPane.showMessageDialog(null, "Error al actualizar el archivo de facturas.");
+        }
     }
-}
 
 }

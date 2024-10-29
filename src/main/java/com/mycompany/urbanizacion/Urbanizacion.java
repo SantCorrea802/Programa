@@ -4,6 +4,8 @@
 
 package com.mycompany.urbanizacion;
 
+import Ventanas.Index;
+
 /**
  *
  * @author HP
@@ -11,6 +13,7 @@ package com.mycompany.urbanizacion;
 public class Urbanizacion {
 
     public static void main(String[] args) {
-        System.out.println("Hello World!");
+        Index menuIndex = new Index();
+        menuIndex.setVisible(true);
     }
 }

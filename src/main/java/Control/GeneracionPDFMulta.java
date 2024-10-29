@@ -21,7 +21,7 @@ import javax.swing.JOptionPane;
 public class GeneracionPDFMulta {
 
     public void crearPDF(String idReceptor, String nombreEmisor, String fechaEvento, String fechaMulta,
-                         String fechaPago, String costo, String descripcion, String idMulta) {
+                         String fechaPago, String costo, String descripcion, String idMulta, String pagoUsuario) {
         String nombreArchivoPDF = "multa" + idReceptor + ".pdf";
         Document document = new Document();
         
@@ -37,6 +37,7 @@ public class GeneracionPDFMulta {
             document.add(new Paragraph("Fecha de la Multa: " + fechaMulta));
             document.add(new Paragraph("Fecha de Pago: " + fechaPago));
             document.add(new Paragraph("Costo de la Multa: " + costo));
+            document.add(new Paragraph("Pago Realizado por Usuario: " + pagoUsuario));
             document.add(new Paragraph("Descripción: " + descripcion));
             document.add(new Paragraph("ID de la Multa: " + idMulta));
             
@@ -49,11 +50,11 @@ public class GeneracionPDFMulta {
         }
     }
     public void registrarMultaEnCSV(String idReceptor, String nombreEmisor, String fechaEvento, String fechaMulta,
-                                    String fechaPago, String costo, String descripcion, String idMulta) {
+                                    String fechaPago, String costo, String descripcion, String idMulta, String pagoUsuario) {
         String archivoCSV = "BaseDatos/multas.csv";
         
         try (BufferedWriter csvWriter = new BufferedWriter(new FileWriter(archivoCSV, true))) {
-            csvWriter.append(idReceptor).append(";").append(nombreEmisor).append(";").append(fechaEvento).append(";").append(fechaMulta).append(";").append(fechaPago).append(";").append(costo).append(";").append(descripcion).append(";").append(idMulta).append("\n");
+            csvWriter.append(idReceptor).append(";").append(nombreEmisor).append(";").append(fechaEvento).append(";").append(fechaMulta).append(";").append(fechaPago).append(";").append(costo).append(";").append(descripcion).append(";").append(idMulta).append(";").append(pagoUsuario).append("\n");
             csvWriter.flush();
 
             JOptionPane.showMessageDialog(null, "Multa registrada correctamente en el archivo CSV.");

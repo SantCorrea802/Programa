@@ -41,6 +41,8 @@ public class ReservaZonaComun extends javax.swing.JFrame {
         this.setLocationRelativeTo(null);
         mostrarHorasDisponibles();
         jLabel1.setText("Reserva: " + this.zonaComun);
+        
+        this.setLocationRelativeTo(null);
     }
 
     /**
@@ -250,7 +252,7 @@ public class ReservaZonaComun extends javax.swing.JFrame {
         String archivoHorasDisponibles = "BaseDatos/horasdisponibles.csv";
         boolean reservaRealizada = false;
 
-        // Leer y actualizar el archivo de horas disponibles
+
         List<String> lineasActualizadas = new ArrayList<>();
 
         try (BufferedReader reader = new BufferedReader(new FileReader(archivoHorasDisponibles))) {
@@ -278,7 +280,6 @@ public class ReservaZonaComun extends javax.swing.JFrame {
             return;
         }
 
-        // Guardar las líneas actualizadas en el archivo de horas disponibles
         if (reservaRealizada) {
             try (BufferedWriter writer = new BufferedWriter(new FileWriter(archivoHorasDisponibles))) {
                 for (String lineaActualizada : lineasActualizadas) {
@@ -340,7 +341,7 @@ public class ReservaZonaComun extends javax.swing.JFrame {
 
                     if (zona.equalsIgnoreCase(this.zonaComun) && horaDisponible.equals(hora) && "true".equals(disponible)) {
                         reservaValida = true;
-                        break;  // La hora está disponible, podemos generar el PDF
+                        break;  // La hora está disponible, podemos generar el pdf
                     }
                 }
             }
@@ -350,13 +351,13 @@ public class ReservaZonaComun extends javax.swing.JFrame {
             return;
         }
 
-        // Si la hora no está disponible, no generamos el PDF
-        if (!reservaValida) {
+        
+        if (!reservaValida) { // Si la hora no está disponible, no generamos el pdf
             JOptionPane.showMessageDialog(null, "La hora seleccionada no está disponible. No se puede generar el PDF.");
             return;
         }
 
-        // Generar el PDF solo si la hora está disponible
+        // Generar el pdf solo si la hora está disponible
         try {
             PdfWriter.getInstance(document, new FileOutputStream("Reserva_" + this.idPropietario + ".pdf"));
             document.open();
@@ -378,7 +379,7 @@ public class ReservaZonaComun extends javax.swing.JFrame {
                             document.add(new Paragraph("Fecha Reservada: " + fechaReservada));
                             document.add(new Paragraph("ID Propietario: " + idProp));
                             document.add(new Paragraph("Cantidad de Personas: " + cant));
-                            document.add(new Paragraph(" "));  // Espacio en blanco entre reservas
+                            document.add(new Paragraph(" "));  // ponemos un espacio en blanco entre reservas
                         }
                     }
                 }
@@ -444,7 +445,6 @@ public class ReservaZonaComun extends javax.swing.JFrame {
         String archivoHorasDisponibles = "BaseDatos/horasdisponibles.csv";
         StringBuilder contenidoTextArea = new StringBuilder();
 
-        // Leer el archivo CSV y filtrar por la zona común especificada
         try (BufferedReader reader = new BufferedReader(new FileReader(archivoHorasDisponibles))) {
             String linea;
             while ((linea = reader.readLine()) != null) {
@@ -454,15 +454,11 @@ public class ReservaZonaComun extends javax.swing.JFrame {
                     String horaDisponible = datos[1];
                     String disponible = datos[2];
 
-                    // Filtrar por la zona común y verificar disponibilidad
                     if (zona.equalsIgnoreCase(this.zonaComun) && "true".equals(disponible)) {
-                        // Agregar la hora disponible al contenido del JTextArea
                         contenidoTextArea.append(horaDisponible).append("\n");
                     }
                 }
             }
-
-            // Mostrar el contenido en el JTextArea
             jTextArea1.setText(contenidoTextArea.toString());
         } catch (IOException e) {
             e.printStackTrace();

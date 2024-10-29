@@ -29,9 +29,7 @@ public class GestionZonaComun {
     
     public void obtenerDatos(String nombreZonaComun) {
         // Inicializar Gson con el adaptador de LocalTime
-        Gson gson = new GsonBuilder()
-                .registerTypeAdapter(LocalTime.class, new LocalTimeAdapter())
-                .create();
+        Gson gson = new GsonBuilder().registerTypeAdapter(LocalTime.class, new LocalTimeAdapter()).create();
 
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("HH:mm:ss");
 

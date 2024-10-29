@@ -1,4 +1,6 @@
-IdReceptor;nombreEmisor;Fecha evento;Fecha multa;Fecha pago;Costo;Descripcion;idMulta
-1033;multador;15/11/2025;25/10/2024;19/11/2025;50000;Has sido multado;122
-1033;fabian;18/02/2024;25/10/2024;19/02/2025;30500;Has sido multado por ruidoso;566
-1033;antonio;10/10/2024;25/10/2024;19/02/2025;50200;este es un ejemplo;555
+IdReceptor;nombreEmisor;Fecha evento;Fecha multa;Fecha pago;Costo;Descripcion;idMulta;pagoUsuario
+1033;multador;15/11/2025;25/10/2024;19/11/2025;0.0;Has sido multado;122;30000.0
+1033;fabian;18/02/2024;25/10/2024;19/02/2025;30500;Has sido multado por ruidoso;566;0
+1033;antonio;10/10/2024;25/10/2024;19/02/2025;50200;este es un ejemplo;555;0
+888;santiago;12/04/2024;27/10/2024;20/05/2025;40000.0;Multado por grosero;444;20000.0
+

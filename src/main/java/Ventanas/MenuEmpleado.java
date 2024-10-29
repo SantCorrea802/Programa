@@ -18,6 +18,8 @@ public class MenuEmpleado extends javax.swing.JFrame {
     public MenuEmpleado(String idEmpleado) {
         this.idEmpleado = idEmpleado;
         initComponents();
+        
+        this.setLocationRelativeTo(null);
     }
 
     /**
@@ -33,6 +35,7 @@ public class MenuEmpleado extends javax.swing.JFrame {
         jLabelMultar = new javax.swing.JLabel();
         jLabelGenerarFactura = new javax.swing.JLabel();
         jLabelCrearEmpleado = new javax.swing.JLabel();
+        jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -84,6 +87,9 @@ public class MenuEmpleado extends javax.swing.JFrame {
             }
         });
         jLabelCrearEmpleado.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabelCrearEmpleadoMouseClicked(evt);
+            }
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 jLabel3MouseEntered(evt);
             }
@@ -92,31 +98,55 @@ public class MenuEmpleado extends javax.swing.JFrame {
             }
         });
 
+        jLabel1.setFont(new java.awt.Font("Arial", 1, 24)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel1.setText("Cerrar sesión");
+        jLabel1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel1MouseClicked1(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                jLabel1MouseEntered1(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                jLabel1MouseExited1(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                .addGap(39, 39, 39)
-                .addComponent(jLabelMultar)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jLabelGenerarFactura)
-                .addGap(38, 38, 38))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                .addContainerGap(171, Short.MAX_VALUE)
-                .addComponent(jLabelCrearEmpleado)
-                .addGap(170, 170, 170))
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                        .addComponent(jLabelMultar)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jLabelGenerarFactura)
+                        .addContainerGap())
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                        .addGap(0, 193, Short.MAX_VALUE)
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                                .addComponent(jLabelCrearEmpleado)
+                                .addGap(142, 142, 142))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                                .addComponent(jLabel1)
+                                .addGap(205, 205, 205))))))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(91, 91, 91)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabelMultar)
-                    .addComponent(jLabelGenerarFactura))
-                .addGap(47, 47, 47)
+                .addGap(57, 57, 57)
                 .addComponent(jLabelCrearEmpleado)
-                .addContainerGap(81, Short.MAX_VALUE))
+                .addGap(44, 44, 44)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabelGenerarFactura)
+                    .addComponent(jLabelMultar))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 41, Short.MAX_VALUE)
+                .addComponent(jLabel1)
+                .addGap(49, 49, 49))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -174,12 +204,33 @@ public class MenuEmpleado extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jLabelCrearEmpleadoAncestorAdded
 
+    private void jLabel1MouseEntered1(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel1MouseEntered1
+        jLabel1.setForeground(Color.gray);
+    }//GEN-LAST:event_jLabel1MouseEntered1
+
+    private void jLabel1MouseExited1(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel1MouseExited1
+        jLabel1.setForeground(Color.white);
+    }//GEN-LAST:event_jLabel1MouseExited1
+
+    private void jLabel1MouseClicked1(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel1MouseClicked1
+        Login menuLogin = new Login();
+        menuLogin.setVisible(true);
+        this.setVisible(false);
+    }//GEN-LAST:event_jLabel1MouseClicked1
+
+    private void jLabelCrearEmpleadoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabelCrearEmpleadoMouseClicked
+        CreacionEmpleado ventanaCreacionEmpleado = new CreacionEmpleado(this.idEmpleado);
+        ventanaCreacionEmpleado.setVisible(true);
+        this.setVisible(false);
+    }//GEN-LAST:event_jLabelCrearEmpleadoMouseClicked
+
     /**
      * @param args the command line arguments
      */
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabelCrearEmpleado;
     private javax.swing.JLabel jLabelGenerarFactura;
     private javax.swing.JLabel jLabelMultar;

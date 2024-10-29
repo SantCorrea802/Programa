@@ -26,6 +26,7 @@ public class MultaPropietario extends javax.swing.JFrame {
     String costo;
     String idMulta;
     String descripcion;
+    String pagoUsuario = "0";
     
     /**
      * Creates new form MultaPropietario
@@ -33,6 +34,8 @@ public class MultaPropietario extends javax.swing.JFrame {
     public MultaPropietario(String idEmpleado) {
         this.idEmpleado = idEmpleado;
         initComponents();
+        
+        this.setLocationRelativeTo(null);
     }
 
     /**
@@ -304,9 +307,9 @@ public class MultaPropietario extends javax.swing.JFrame {
         
         GeneracionPDFMulta generadorPDF = new GeneracionPDFMulta();
         generadorPDF.crearPDF(this.idReceptor, this.nombreEmisor, this.fechaEvento, fechaMulta,
-                              this.fechaPago, this.costo, this.descripcion, this.idMulta);
+                              this.fechaPago, this.costo, this.descripcion, this.idMulta, this.pagoUsuario);
         generadorPDF.registrarMultaEnCSV(this.idReceptor, this.nombreEmisor, this.fechaEvento, fechaMulta,
-                                         this.fechaPago, this.costo, this.descripcion, this.idMulta);
+                                         this.fechaPago, this.costo, this.descripcion, this.idMulta, this.pagoUsuario);
     }//GEN-LAST:event_jButtonMultarActionPerformed
 
     private void jLabel8MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel8MouseEntered

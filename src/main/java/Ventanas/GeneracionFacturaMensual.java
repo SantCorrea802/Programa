@@ -34,6 +34,8 @@ public class GeneracionFacturaMensual extends javax.swing.JFrame {
     public GeneracionFacturaMensual(String idEmpleado) {
         this.idEmpleado = idEmpleado;
         initComponents();
+        
+        this.setLocationRelativeTo(null);
     }
 
     /**
@@ -240,7 +242,7 @@ public class GeneracionFacturaMensual extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, "El costo debe ser un número válido.");
             return;
         }
-        // Verificar si la factura ya existe en el archivo CSV
+        // Verificar si la factura ya existe en el archivo
         String archivoCSV = "BaseDatos/facturas.csv";
         boolean facturaExiste = false;
 
@@ -259,13 +261,13 @@ public class GeneracionFacturaMensual extends javax.swing.JFrame {
             return;
         }
 
-        // Si la factura ya existe, mostramos un mensaje y no la creamos
-        if (facturaExiste) {
+        
+        if (facturaExiste) { // Si la factura ya existe, mostramos un mensaje y no la creamos
             JOptionPane.showMessageDialog(null, "El número de factura " + this.numFactura + " ya existe. No se puede crear la factura.");
             return;
         }
-        // Si la factura no existe, procedemos a guardarla en el archivo CSV
-        try (BufferedWriter writer = new BufferedWriter(new FileWriter(archivoCSV, true))) {
+        
+        try (BufferedWriter writer = new BufferedWriter(new FileWriter(archivoCSV, true))) {// Si la factura no existe, procedemos a guardarla en el archivo
             writer.write(this.numFactura + ";" +
                          this.fechaPago + ";" +
                          this.fechaFactura + ";" +

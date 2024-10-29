@@ -1,3 +1,6 @@
 salario;fechaRegistro;nombre;correo;id;fechaNacimiento;numeroContacto;genero;contrase�a;profesion;apellido;rol
 0.0;2024-10-24;santiago;santiago@gmail.com;10;2004-04-19;3148672154;Masculino;123;nada;correa;2
 0.0;2024-10-24;Santiago;santiago@gmail.com;1033;2004-04-19;3148640434;Masculino;123456;nada;Correa Marulanda;1
+0.0;2024-10-26;Usuario;prueba@gmail.com;6496;2005-05-02;3254154785;Masculino;123;tester;Prueba;2
+0.0;2024-10-27;Pedro;gomezp@gmail.com;888;2005-05-09;3202151421;Masculino;555;nada;Gomez;1
+0.0;2024-10-28;usuario;ejemplo1@gmail.com;666;2005-04-05;3148640434;Masculino;123;nada;prueba;2
